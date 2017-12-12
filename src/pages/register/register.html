@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Register a New User</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onRegister(f)">
+    <ion-item-group no-lines>
+      <ion-item-divider color="light">PROFILE</ion-item-divider>
+      <ion-item padding-left padding-right>
+        <ion-label floating>First and Last Name</ion-label>
+        <ion-input type="text" ngModel required name="name"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group no-lines>
+      <ion-item-divider color="light" margin-top>LOGIN</ion-item-divider>
+      <ion-item padding-left padding-right>
+        <ion-label floating>E-Mail Address</ion-label>
+        <ion-input type="text" ngModel required name="email"></ion-input>
+      </ion-item>
+      <ion-item padding-left padding-right>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" ngModel required name="password"></ion-input>
+      </ion-item>
+      <ion-item padding-left padding-right>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" ngModel required name="confirmpassword"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-grid margin-top>
+      <ion-row>
+        <ion-col>
+          <button ion-button large block type="submit" [disabled]="!f.valid">CREATE NEW USER</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

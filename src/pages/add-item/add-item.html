@@ -1,0 +1,52 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title *ngIf="editItem">Edit Item in My List</ion-title>
+    <ion-title *ngIf="!editItem">Add Item to My List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onAddItemToList(f)">
+    <ion-item-group>
+      <ion-item no-padding>
+        <ion-label floating>Item Name</ion-label>
+        <ion-input *ngIf="editItem" type="text" ngModel="{{ editItem.name }}" required name="name"></ion-input>
+        <ion-input *ngIf="!editItem" type="text" ngModel required name="name"></ion-input>
+      </ion-item>
+      <ion-item no-padding>
+        <ion-label floating>Item Description</ion-label>
+        <ion-textarea *ngIf="editItem" ngModel="{{ editItem.description }}" required name="description"></ion-textarea>
+        <ion-textarea *ngIf="!editItem"  ngModel required name="description"></ion-textarea>
+      </ion-item>
+      <ion-item no-padding>
+        <ion-label floating>Price (Optional)</ion-label>
+        <ion-input *ngIf="editItem" type="text" ngModel="{{ editItem.price }}" name="price"></ion-input>
+        <ion-input *ngIf="!editItem"  type="text" ngModel name="price"></ion-input>
+      </ion-item>
+      <ion-item no-padding>
+        <ion-label floating>Stores (Optional)</ion-label>
+        <ion-input *ngIf="editItem" type="text" ngModel="{{ editItem.stores }}" name="stores"></ion-input>
+        <ion-input *ngIf="!editItem"  type="text" ngModel name="stores"></ion-input>
+      </ion-item>
+      <ion-item no-padding>
+        <ion-label floating>URL (Optional)</ion-label>
+        <ion-input *ngIf="editItem" type="text" ngModel="{{ editItem.link }}" name="link"></ion-input>
+        <ion-input *ngIf="!editItem"  type="text" ngModel name="link"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <div margin-top>
+      <img *ngIf="editItem && editItem.image" src="{{ editItem.image }}" />
+      <br *ngIf="editItem && editItem.image">
+      <img *ngIf="!editItem && itemImageSet" src="{{ itemImageUrl }}" />
+      <br *ngIf="!editItem && itemImageSet">
+      <button ion-button outline block icon-left type="button" (click)="onSelectPhoto()">
+        <ion-icon name="image"></ion-icon> Add Picture
+      </button>
+    </div>
+    <button *ngIf="editItem" ion-button margin-top block large type="submit" [disabled]="!f.valid">Update Item</button>
+    <button *ngIf="!editItem" ion-button margin-top block large type="submit" [disabled]="!f.valid">Save New Item</button>
+  </form>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-menu [content]="nav">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Simple List</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="onLogout(rootPage)" *ngIf="!isAuthenticated">
+        <ion-icon item-left name="log-in"></ion-icon> Sign-in
+      </button>
+      <button ion-item (click)="onLoad(homePage)" *ngIf="isAuthenticated">
+        <ion-icon item-left name="home"></ion-icon> Home
+      </button>
+      <button ion-item (click)="onLoad(searchPage)" *ngIf="isAuthenticated">
+        <ion-icon item-left name="search"></ion-icon> Search
+      </button>
+      <button ion-item (click)="onShare()" *ngIf="isAuthenticated">
+        <ion-icon item-left name="share"></ion-icon> Invite Friends
+      </button>
+      <button ion-item (click)="onLogout()" *ngIf="isAuthenticated">
+        <ion-icon item-left name="log-out"></ion-icon> Logout
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #nav></ion-nav>

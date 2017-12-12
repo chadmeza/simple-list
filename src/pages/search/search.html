@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Search for People</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar
+      (ionInput)="onSearch($event)"
+      debounce="500"
+      placeholder="Search by name, city, or e-mail">
+    </ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let user of users" (click)="onSelectUser(user)">
+      <ion-avatar item-start>
+        <img *ngIf="!user.image" src="{{ selfie }}" />
+        <img *ngIf="user.image" src="{{ user.image }}" />
+      </ion-avatar>
+      <h2><strong>{{ user.name }}</strong></h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

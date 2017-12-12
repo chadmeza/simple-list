@@ -1,0 +1,30 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img [src]="logo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <form #f="ngForm" (ngSubmit)="onSignin(f)">
+    <ion-item-group>
+      <ion-item no-lines no-padding>
+        <ion-label floating>E-Mail Address</ion-label>
+        <ion-input type="text" ngModel required name="email"></ion-input>
+      </ion-item>
+      <ion-item no-lines no-padding>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" ngModel required name="password"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <button margin-top ion-button large block type="submit" [disabled]="!f.valid">Sign In</button>
+  </form>
+  <ion-grid>
+    <ion-row text-right>
+      <ion-col>
+        <button ion-button clear (click)="onForgotPassword()">Forgot Password</button>
+        <button ion-button clear (click)="onRegisterUser()">Register a New User</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

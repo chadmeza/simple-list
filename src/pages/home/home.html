@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="profile-bg">
+    <ion-row padding>
+      <ion-col col-4>
+        <img *ngIf="profileImageSet" src="{{ user.image }}" />
+        <br *ngIf="profileImageSet">
+        <button ion-button outline small block icon-left (click)="onSelectPhoto()">
+          <ion-icon name="add"></ion-icon> PIC
+        </button>
+      </ion-col>
+      <ion-col col-8 padding-left>
+        Name:<br>{{ user.name }}
+        <p>E-mail:<br>{{ user.email.substr(0,3) }}**********</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid padding *ngIf="user.items.length == 0">
+    <ion-row>
+      <ion-col>
+        <p>You have no items in your list.</p>
+        <p>Click the "+" button below to add items.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div padding>
+    <ion-card padding *ngFor="let item of user.items; let i = index">
+      <img *ngIf="item.image" [src]="item.image" />
+      <ion-card-content>
+        <ion-card-title>{{ item.name }}</ion-card-title>
+        <ion-badge *ngIf="item.price" color="dark">${{ item.price }}</ion-badge>
+        <p>{{ item.description }}</p>
+        <ion-note *ngIf="item.stores"><strong>Find it at:</strong> {{ item.stores }}</ion-note><br>
+        <ion-note *ngIf="item.link"><a href="{{ item.link }}">{{ item.link }}</a></ion-note>
+      </ion-card-content>
+      <ion-row>
+        <ion-col text-left>
+          <button ion-button clear small icon-left (click)="onEditItem(item, i)"><ion-icon name="open"></ion-icon><div>Edit</div></button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small icon-left (click)="onDeleteItem(item, i)"><ion-icon name="trash"></ion-icon><div>Remove</div></button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <ion-fab bottom right>
+    <button ion-fab (click)="onAddItemToList()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
