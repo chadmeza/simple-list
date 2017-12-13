@@ -1,4 +1,6 @@
 # Simple List
+Mobile application (Android & iOS) developed using Ionic.
+## Description from Google Play Store and Apple App Store
 Have you have gone to a birthday party, or a celebration of some sort, and you did not know what to buy as a gift? With Simple List, you will never have to fret over gift ideas again. 
 
 Simple List is an easy-to-use mobile app that allows users to create gift ideas and wish lists, and also allows users to view each other's gift ideas and wish lists.
